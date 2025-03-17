@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           profilePictureWidth: 150.0, // Mobile width
           profilePictureHeight: 130.0, // Mobile height
           backgroundWidth: 400.0, // Mobile background width
-          backgroundHeight: 350.0, // Mobile background height
+          backgroundHeight: 200.0, // Mobile background height
           socialIconsWidth: 100.0, // Mobile social icons width
           socialIconsHeight: 100.0, // Mobile social icons height
           containerHeight: 200.0,
