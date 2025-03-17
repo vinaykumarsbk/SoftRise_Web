@@ -9,12 +9,6 @@ class FooterClass extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Get the screen width
-    final screenWidth = MediaQuery.of(context).size.width;
-
-    // Scale factor for text and icons based on the screen width
-    double textScaleFactor = screenWidth < 600 ? 0.8 : 1.0; // For small screens (mobile), reduce size
-    double iconScaleFactor = screenWidth < 600 ? 0.5 : 1.0; // For small screens (mobile), reduce icon size
 
     // Increase only the right-side padding here
     final double leftPadding = 40.0; // Keep original left padding
@@ -29,9 +23,9 @@ class FooterClass extends StatelessWidget {
             AppColors.appBarColor1,
             AppColors.appBarColor2
           ],
-          begin: FractionalOffset(0.0, 0.0),
+          begin: FractionalOffset(1.0, 0.0),
           end: FractionalOffset(1.0, 0.0),
-          stops: [0.0, 1.0, 0.0],
+          stops: [0.0, 0.0, 0.0],
           tileMode: TileMode.clamp,
         ),
       ), // Background color
@@ -46,30 +40,26 @@ class FooterClass extends StatelessWidget {
               // Company name and tagline
               Text(
                 'SoftRise',
-                style: AppTextStyles.headingStyles().copyWith(fontSize: 24 * textScaleFactor),
+                style: AppTextStyles.headingStyles().copyWith(fontSize: 24),
               ),
               const SizedBox(height: 8),
               Text(
                 'Innovation Meets Growth',
-                style: AppTextStyles.montserratStyle(color: Colors.white).copyWith(fontSize: 14 * textScaleFactor),
+                style: AppTextStyles.montserratStyle(color: Colors.white).copyWith(fontSize: 14),
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: _buildSocialIcons(),
               ),
               const SizedBox(height: 16),
 
               // Copyright Text
               Text(
                 '© SoftRise 2025 All rights reserved.',
-                style: AppTextStyles.normalStyle(color: Colors.white).copyWith(fontSize: 12 * textScaleFactor),
+                style: AppTextStyles.normalStyle(color: Colors.white).copyWith(fontSize: 12),
               ),
             ],
-          ),
-
-          // Right section: Social media links
-          // Wrapping in Expanded or Flexible to prevent overflow
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: _buildSocialIcons(iconScaleFactor),
-            ),
           ),
         ],
       ),
@@ -77,7 +67,7 @@ class FooterClass extends StatelessWidget {
   }
 
   // Helper function to build social media icons dynamically from the list
-  List<Widget> _buildSocialIcons(double iconScaleFactor) {
+  List<Widget> _buildSocialIcons() {
     List<Widget> socialIcons = [];
     for (var socialItem in Constants.social) {
       socialIcons.add(
@@ -86,7 +76,7 @@ class FooterClass extends StatelessWidget {
           child: Icon(
             socialItem['icon'],
             color: Colors.white,
-            size: 28 * iconScaleFactor, // Scale icon size based on screen width
+            size: 28, // Scale icon size based on screen width
           ),
         ),
       );
