@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soft_rise/constants.dart';
 import 'package:soft_rise/views/dashboard.dart';
@@ -16,13 +17,17 @@ class LocalHttpOverrides extends HttpOverrides {
 }
 
 Future<void> main() async {
-  runApp(const MyApp());
-  /// Used to validate certificates for local development
-  HttpOverrides.global = LocalHttpOverrides();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  if (!kReleaseMode) {
+    HttpOverrides.global = LocalHttpOverrides();
+  }
+
   await Supabase.initialize(
     url: Constants.supabaseUrl,
     anonKey: Constants.supabaseAnnonKey,
   );
+
   runApp(const MyApp());
 }
 
@@ -35,10 +40,10 @@ class MyApp extends StatelessWidget {
       title: 'Soft Rise',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme,),
+        textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: DashBoard(),
+      home: const DashBoard(),
     );
   }
 }
