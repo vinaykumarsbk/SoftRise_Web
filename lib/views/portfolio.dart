@@ -144,10 +144,10 @@ class _MyPortfolioState extends State<Portfolio> {
                     borderRadius: BorderRadius.circular(20),
                     gradient: LinearGradient(
                       colors: [
-                        AppColors.themeColor.withOpacity(1.0),
-                        AppColors.themeColor.withOpacity(0.9),
-                        AppColors.themeColor.withOpacity(0.8),
-                        AppColors.themeColor.withOpacity(0.6),
+                        AppColors.themeColor.withValues(alpha: 1.0),
+                        AppColors.themeColor.withValues(alpha: 0.9),
+                        AppColors.themeColor.withValues(alpha: 0.8),
+                        AppColors.themeColor.withValues(alpha: 0.6),
                       ],
                       begin: Alignment.bottomCenter,
                       end: Alignment.topCenter,

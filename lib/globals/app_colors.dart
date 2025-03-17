@@ -15,4 +15,5 @@ class AppColors {
   static const Color appBarColor = Colors.black;
   static const Color appBarColor1 = Color(0xFF38404D);
   static const Color appBarColor2 = Color(0xFFB0BEC5);
+  static const Color transparent =Colors.transparent;
 }
